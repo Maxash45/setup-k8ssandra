@@ -1,0 +1,10 @@
+apiVersion: medusa.k8ssandra.io/v1alpha1
+kind: MedusaConfiguration
+metadata:
+  name: medusaconfiguration-s3
+spec:
+  storageProperties:
+    storageProvider: s3
+    bucketName: ifrm-cassandra-bucket
+    storageSecretRef:
+      name: k8ssandracluster-medusa-storage
