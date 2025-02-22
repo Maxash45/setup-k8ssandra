@@ -1,4 +1,4 @@
-# setup-k8ssandra
+# setup-k8ssandra Operator
 ## Migration of Cassandra to K8ssandra with MinIO, Medusa Utility, and Backup Using CronJob with Retention Policy.
 
 This document provides a comprehensive guide to migrate Cassandra to K8ssandra, implement a backup strategy using Medusa and MinIO, automate backups with CronJobs, and enforce a retention policy for effective data management.
