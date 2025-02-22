@@ -25,13 +25,13 @@ mkdir setupk8ssandra
 cd setupk8ssandra
 ```
 
-now install minio first from 'minio.yaml'
+now install minio first from `minio.yaml`
 
-'''
+```
 vi minio.yaml
-'''
-'''
+```
+```
 kubectl apply -f minio.yaml
-'''
+```
 
 
