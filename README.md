@@ -39,7 +39,7 @@ Check pod and service is up and running
 kubectl get pods -n minio
 kubectl get svc -n minio
 ```
-To access minio or 
+To access minio 
 ```
 kubectl port-forward svc/minio 9090:9090 --address=0.0.0.0 -n minio
 ```
@@ -59,4 +59,37 @@ mc alias list
 ```
 
 ### Minio setup done at this stage
+
+> Installing cert Mangaer if cert mangaer is not present.
+```
+helm repo add jetstack https://charts.jetstack.io
+helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --version v1.13.3 --set installCRDs=true
+```
+> Installing k8ssandra-operator. here new namespace is created ` k8ssandra-operator`
+```
+helm repo add k8ssandra https://helm.k8ssandra.io
+helm install k8ssandra-operator k8ssandra/k8ssandra-operator -n k8ssandra-operator --create-namespace --set global.clusterScoped=true
+```
+> Then clone the git
+```
+git clone https://github.com/k8ssandra/k8ssandra-cluster.git
+```
+After cloning the git remove `README.md` , `values.yaml`  and `/templates/NOTES.txt` 
+After deleting file create `values.yaml`  outside the k8ssandra-cluster repo 
+```
+vi values.yaml
+```
+Inside `values.yaml` you need to change in medusa bucketname, namespace, access key and secrete which is given in minio 
+```
+helm install k8ssandra-cluster ./k8ssandra-cluster -f values.yaml -n k8ssandra-operator
+kubectl get pods -n k8ssandra-operator
+```
+**So here we get the all  pods are in running stage.
+Done with setup part of k8ssandra cluster.**
+
+
+
+
+
+
 
