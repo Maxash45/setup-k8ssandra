@@ -16,8 +16,8 @@ This document provides a comprehensive guide to migrate Cassandra to K8ssandra, 
 ●	Cert manager.
 
 ### STEPS TO SET UP THE MINIO:
-> Create new namespace e.g k8ssandra-operator
-> Create new directory  e.g setupk8ssandra
+ Create new namespace e.g k8ssandra-operator
+ Create new directory  e.g setupk8ssandra
 
 ```
 kubectl create ns minio
@@ -46,13 +46,13 @@ kubectl port-forward svc/minio 9090:9090 --address=0.0.0.0 -n minio
 ```
 % http://<IPaddress:nodeport> /
 ```
-> Create Bucket on minio e.g ifrm-cassandra-bucket and create new  access key // this is my bucket name
+ Create Bucket on minio e.g ifrm-cassandra-bucket and create new  access key // this is my bucket name
 
-> Execute into the  pod  by using below command
+ Execute into the  pod  by using below command
 ```
 %kubectl exec -it minio-bd46f5fdd-2r5rr  -- bash
 ```
-> Setting Alias into minio pod and use your own access key and secret key.
+ Setting Alias into minio pod and use your own access key and secret key.
 ```
 mc alias set my minio http://<minio-service>:9000 <access-key> <secret-key>
 mc alias list
@@ -60,17 +60,17 @@ mc alias list
 
 ### Minio setup done at this stage
 
-> Installing cert Mangaer if cert mangaer is not present.
+ Installing cert Mangaer if cert mangaer is not present.
 ```
 helm repo add jetstack https://charts.jetstack.io
 helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --version v1.13.3 --set installCRDs=true
 ```
-> Installing k8ssandra-operator. here new namespace is created ` k8ssandra-operator`
+ Installing k8ssandra-operator. here new namespace is created ` k8ssandra-operator`
 ```
 helm repo add k8ssandra https://helm.k8ssandra.io
 helm install k8ssandra-operator k8ssandra/k8ssandra-operator -n k8ssandra-operator --create-namespace --set global.clusterScoped=true
 ```
-> Then clone the git
+ Then clone the git
 ```
 git clone https://github.com/k8ssandra/k8ssandra-cluster.git
 ```
