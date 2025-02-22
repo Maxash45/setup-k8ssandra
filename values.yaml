@@ -1,0 +1,54 @@
+ server:
+  type: "cassandra"
+  version: "4.0.6"
+topology:
+  datacenters:
+    - name: "dc1"
+      size: 1
+      racks:
+        - name: "rack1"
+          # nodeAffinityLabels:
+          #   kubernetes.io/topology-zone: "us-east1-a"
+
+resources:
+  requests:
+    storage:
+      class: "local-storage"
+      size: "50Gi"
+
+config:
+  jvmOptions:
+    heapSize: 16G
+  resources:
+    limits:
+      memory: "16Gi"  # Maximum memory allocated to Cassandra
+      cpu: "4"        # Maximum CPU cores allocated to Cassandra
+    requests:
+      memory: "8Gi"   # Minimum guaranteed memory
+      cpu: "2"        # Minimum guaranteed CPU cores
+  telemetry:
+    prometheus:
+      enabled: true  # Added telemetry for Cassandra pod
+
+reaper:
+  ui:
+    username: "reaper"
+    password: "reaper"
+  cql:
+    username: "reaper"
+    password: "reaper"
+  keyspace: reaper_db
+  telemetry:
+    prometheus:
+      enabled: true
+
+medusa:
+  provider: "s3_compatible"
+  s3_compatible:
+    bucketName: "ifrm-cassandra-bucket"
+    prefix: "frm"
+    host: "minio.k8ssandra2-operator.svc"
+    port: 9000
+    secure: false
+    access_key: "Apef1C0KHcKwqg5FM8JQ"
+    secret_key: "L97XvHCWCAizzj0P6MubbFSjk5tYHsevoGgqJwwR"
