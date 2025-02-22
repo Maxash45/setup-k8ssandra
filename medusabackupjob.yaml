@@ -1,0 +1,6 @@
+apiVersion: medusa.k8ssandra.io/v1alpha1
+kind: MedusaBackupJob
+metadata:
+  name: medusa-backuup-21-jan
+spec:
+  cassandraDatacenter: dc1
