@@ -3,7 +3,7 @@
 
 This document provides a comprehensive guide to migrate Cassandra to K8ssandra, implement a backup strategy using Medusa and MinIO, automate backups with CronJobs, and enforce a retention policy for effective data management.
 
-Prerequisites
+### Prerequisites
 ●	A Kubernetes cluster (MicroK8s)
 ●	Sufficient compute and storage resources in the cluster to handle the Cassandra workload.
 ●	MinIO instance for object storage.
