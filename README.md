@@ -17,9 +17,12 @@ This document provides a comprehensive guide to migrate Cassandra to K8ssandra, 
 
 ### STEPS TO SET UP THE MINIO:
 > Create new namespace e.g k8ssandra-operator
- `    kubectl create ns k8ssandra-operator     `
-
 > Create new directory  e.g setupk8ssandra
- `     mkdir setupk8ssandra                    `
+
+```
+kubectl create ns minio
+mkdir setupk8ssandra
+```
+
 
 
