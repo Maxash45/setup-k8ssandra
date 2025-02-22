@@ -87,6 +87,34 @@ kubectl get pods -n k8ssandra-operator
 **So here we get the all  pods are in running stage.
 Done with setup part of k8ssandra cluster.**
 
+### For backup ,restoration,cronjob and retention 
+```
+vi medusaconfig.yaml
+```
+So medusa config name mention in the k8ssandracluste
+Create file file for medusa backup
+```
+vi medusabackupjob.yaml
+kubectl apply -f medusabackupjob.yaml -n k8ssandra-operator
+kubectl get medusabackupjob -n k8ssandra-operator
+```
+Create file for restore ( edit backup name from minio)
+```
+vi medusarestorejob.yaml
+kubectl apply -f medusarestorejob.yaml -n k8ssandra-operator
+kubectl get medusarestorejob -n k8ssandra-operator
+```
+For Schedule backup 
+```
+vi medusabackupschedule.yaml
+kubectl apply -f medusabackupschedule.yaml -n k8ssandra-operator
+kubectl get medusabackupschedule -n k8ssandra-operator
+```
+
+> Make the changes in cronjob job according to requirement.
+
+
+
 
 
 
