@@ -31,7 +31,32 @@ now install minio first from `minio.yaml`
 vi minio.yaml
 ```
 ```
-kubectl apply -f minio.yaml
+kubectl apply -f minio.yaml -n minio
+```
+Check pod and service is up and running
+
+```
+kubectl get pods -n minio
+kubectl get svc -n minio
+```
+To access minio or 
+```
+kubectl port-forward svc/minio 9090:9090 --address=0.0.0.0 -n minio
+```
+```
+% http://<IPaddress:nodeport> /
+```
+> Create Bucket on minio e.g ifrm-cassandra-bucket and create new  access key // this is my bucket name
+
+> Execute into the  pod  by using below command
+```
+%kubectl exec -it minio-bd46f5fdd-2r5rr  -- bash
+```
+> Setting Alias into minio pod and use your own access key and secret key.
+```
+mc alias set my minio http://<minio-service>:9000 <access-key> <secret-key>
+mc alias list
 ```
 
+### Minio setup done at this stage
 
