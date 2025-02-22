@@ -15,5 +15,8 @@ This document provides a comprehensive guide to migrate Cassandra to K8ssandra, 
 ●	Helm for deploying Helm charts.
 ●	Cert manager.
 
+### STEPS TO SET UP THE MINIO:
+> Create new namespace e.g k8ssandra-operator
+> Create new directory  e.g setupk8ssandra
 
 `kubectl create ns k8ssandra-operator`
