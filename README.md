@@ -22,7 +22,16 @@ This document provides a comprehensive guide to migrate Cassandra to K8ssandra, 
 ```
 kubectl create ns minio
 mkdir setupk8ssandra
+cd setupk8ssandra
 ```
 
+now install minio first from 'minio.yaml'
+
+'''
+vi minio.yaml
+'''
+'''
+kubectl apply -f minio.yaml
+'''
 
 
